@@ -18,6 +18,15 @@ class PersonWithExtraAttr extends Person {
   extraThing: string = attr({ persist: false });
 }
 
+class Credential extends ApplicationRecord {
+  static endpoint = '/v1/credentials';
+  static jsonapiType = 'credentials';
+
+  login: string = attr();
+  password: string = attr();
+  jwt: string = attr();
+}
+
 // Ensure setup() can be run multiple times with no problems
 // putting this here, otherwise relations wont be available.
 Config.setup();
@@ -94,5 +103,6 @@ export {
   Book,
   Genre,
   Bio,
+  Credential,
   Tag
 };
